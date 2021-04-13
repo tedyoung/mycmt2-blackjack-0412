@@ -28,7 +28,8 @@ public class Game {
   }
 
   public GameOutcome determineOutcome() {
-    if (playerHand.cards().size() == 2 && playerHand.value() == 21) {
+    // throw IllegalStateException if game is not done
+    if (playerHand.isBlackjack()) {
       return GameOutcome.PLAYER_WINS_BLACKJACK;
     }
     if (playerHand.isBusted()) {
