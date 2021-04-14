@@ -17,6 +17,7 @@ public class Game {
   }
 
   public void initialDeal() {
+    // if initial deal already happened, then throw exception
     dealRoundOfCards();
     dealRoundOfCards();
   }
