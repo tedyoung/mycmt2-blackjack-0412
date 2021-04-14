@@ -21,7 +21,7 @@ public class BlackjackController {
   public String startGame() {
     // query Game: can we do an initial deal?
     game.initialDeal();
-    return "redirect:/game";
+    return redirect(game);
   }
 
   @GetMapping("/game")
@@ -33,6 +33,10 @@ public class BlackjackController {
   @PostMapping("/hit")
   public String hitCommand() {
     game.playerHits();
+    return redirect(game);
+  }
+
+  private String redirect(Game game) {
     if (game.isPlayerDone()) {
       return "redirect:/done";
     }
@@ -51,6 +55,6 @@ public class BlackjackController {
   public String standCommand() {
     game.playerStands();
     game.dealerTurn();
-    return "redirect:/done";
+    return redirect(game);
   }
 }
