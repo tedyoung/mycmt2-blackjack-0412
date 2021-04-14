@@ -46,4 +46,9 @@ public class BlackjackController {
     model.addAttribute("outcome", game.determineOutcome().toString());
     return "done";
   }
+
+  @PostMapping("/stand")
+  public String standCommand() {
+    return "redirect:/";
+  }
 }
