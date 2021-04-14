@@ -44,7 +44,7 @@ class GameOutcomeTest {
   }
 
   @Test
-  public void playerStandsResultsInDealerDrawAdditionalCard() throws Exception {
+  public void playerStandsResultsInDealerTakingTheirTurn() throws Exception {
     Deck dealerDrawsCardDeck = new StubDeck(Rank.TEN,  Rank.QUEEN,
                                             Rank.NINE, Rank.FIVE,
                                                        Rank.SIX);
