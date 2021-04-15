@@ -50,6 +50,8 @@ class GameMonitorTest {
     game.playerHits();
 
     verify(gameMonitorSpy, never()).roundCompleted(any());
+    // Could use the following, but is not recommended as per docs, "never() is more explicit and communicates the intent well."
+    // verifyNoInteractions(gameMonitorSpy);
   }
 
   @Test
