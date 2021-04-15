@@ -29,6 +29,24 @@ public class Game {
     // if initial deal already happened, then throw exception
     dealRoundOfCards();
     dealRoundOfCards();
+    updatePlayerDoneTo(playerHand.isBlackjack());
+  }
+
+  public void playerHits() {
+    playerHand.drawFrom(deck);
+    updatePlayerDoneTo(playerHand.isBusted());
+  }
+
+  public void playerStands() {
+    dealerTurn();
+    updatePlayerDoneTo(true);
+  }
+
+  public void updatePlayerDoneTo(boolean isDone) {
+    playerDone = isDone;
+    if (playerDone) {
+      gameMonitor.roundCompleted(this);
+    }
   }
 
   private void dealRoundOfCards() {
@@ -75,19 +93,6 @@ public class Game {
     return dealerHand;
   }
 
-  public void playerHits() {
-    playerHand.drawFrom(deck);
-    playerDone = playerHand.isBusted();
-    if (playerDone) {
-      gameMonitor.roundCompleted(this);
-    }
-  }
-
-  public void playerStands() {
-    playerDone = true;
-    dealerTurn();
-    gameMonitor.roundCompleted(this);
-  }
 
   public boolean isPlayerDone() {
     return playerDone;
